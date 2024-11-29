@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    Rigidbody2D rigidbody2d;
+
+    Vector3 mousePositionScreen;
+    Vector3 mousePositionWorldSpace;
+
+    private void Awake()
     {
-        
+        rigidbody2d = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        mousePositionScreen = Input.mousePosition;
+
+        mousePositionWorldSpace = Camera.main.ScreenToWorldPoint(mousePositionScreen);
+    }
+
+    private void FixedUpdate()
+    {
+        Vector2 newPlayerPosition = new Vector2(mousePositionWorldSpace.x, rigidbody2d.position.y);
+        rigidbody2d.MovePosition(newPlayerPosition);
     }
 }
+
