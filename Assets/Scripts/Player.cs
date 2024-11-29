@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
 
     Vector2 initPosition;
 
+    public float speed = 0.1f;
+
     private void Awake()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
@@ -19,6 +21,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        
         mousePositionScreen = Input.mousePosition;
 
         mousePositionWorldSpace = Camera.main.ScreenToWorldPoint(mousePositionScreen);
@@ -26,8 +29,9 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector2 newPlayerPosition = new Vector2(mousePositionWorldSpace.x, mousePositionWorldSpace.y);
-        rigidbody2d.MovePosition(newPlayerPosition);
+        float horizontal = Input.GetAxis("Horizontal") * speed;
+        float vertikal = Input.GetAxis("Vertical") * speed;
+        transform.Translate(horizontal, vertikal,0);
     }
 
 
