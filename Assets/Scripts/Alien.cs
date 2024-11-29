@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Alien : MonoBehaviour
 {
-    private bool moveLeft=false;
+    public bool moveLeft=false;
     // Start is called before the first frame update
     void Start()
     {

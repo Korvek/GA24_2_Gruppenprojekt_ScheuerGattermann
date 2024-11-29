@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector2 newPlayerPosition = new Vector2(mousePositionWorldSpace.x, rigidbody2d.position.y);
+        Vector2 newPlayerPosition = new Vector2(mousePositionWorldSpace.x, mousePositionWorldSpace.y);
         rigidbody2d.MovePosition(newPlayerPosition);
     }
 
@@ -34,7 +34,14 @@ public class Player : MonoBehaviour
 
 private void OnCollisionEnter2D(Collision2D collision)
     {
-        transform.position = initPosition;
+        if (collision.transform.tag == "Alien")
+        {
+            transform.position = initPosition;
+        }
+        else if (collision.transform.tag == "Fin")
+        {
+
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
