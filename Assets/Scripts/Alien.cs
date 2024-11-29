@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Alien : MonoBehaviour
 {
-    Rigidbody2D rigidbody2d;
+    private bool moveLeft=false;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +17,23 @@ public class Alien : MonoBehaviour
     }
 
     private void FixedUpdate()
-    {
-        transform.position = new Vector2(transform.position.x+0.01f,transform.position.y);
+    {        
+        if (transform.position.x >= 10 ) 
+        {
+            moveLeft = true;
+        }
+        else if (transform.position.y >= 10 ) 
+        { 
+            moveLeft = false; 
+        }
+        
+        if (moveLeft )
+        {
+            transform.position = new Vector2(transform.position.x - 0.01f, transform.position.y);
+        }
+        else
+        {
+            transform.position = new Vector2(transform.position.x + 0.01f, transform.position.y);
+        }
     }
 }
