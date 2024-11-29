@@ -26,5 +26,16 @@ public class Player : MonoBehaviour
         Vector2 newPlayerPosition = new Vector2(mousePositionWorldSpace.x, rigidbody2d.position.y);
         rigidbody2d.MovePosition(newPlayerPosition);
     }
-}
 
+
+
+private void OnCollisionEnter2D(Collision2D collision)
+    {
+        
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+       
+    }
+}
