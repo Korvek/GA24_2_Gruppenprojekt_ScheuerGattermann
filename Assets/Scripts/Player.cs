@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
     Rigidbody2D rigidbody2d;
+    public GameObject siegText;
 
     Vector3 mousePositionScreen;
     Vector3 mousePositionWorldSpace;
@@ -32,6 +35,12 @@ public class Player : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal") * speed;
         float vertikal = Input.GetAxis("Vertical") * speed;
         transform.Translate(horizontal, vertikal,0);
+
+        if(Input.GetButton("Jump"))
+        {
+            Scene scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(scene.name);
+        }
     }
 
 
@@ -42,14 +51,13 @@ private void OnCollisionEnter2D(Collision2D collision)
         {
             transform.position = initPosition;
         }
-        else if (collision.transform.tag == "Fin")
-        {
-
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-       
+        if (collision.transform.tag == "Fin")
+        {
+            siegText.SetActive(true);
+        }
     }
 }

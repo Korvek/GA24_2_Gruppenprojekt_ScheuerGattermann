@@ -22,7 +22,7 @@ public class Alien : MonoBehaviour
         {
             moveLeft = true;
         }
-        else if (transform.position.y >= 10 ) 
+        else if (transform.position.x <= -10 ) 
         { 
             moveLeft = false; 
         }
