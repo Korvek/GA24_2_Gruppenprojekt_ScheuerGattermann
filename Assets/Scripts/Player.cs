@@ -9,9 +9,12 @@ public class Player : MonoBehaviour
     Vector3 mousePositionScreen;
     Vector3 mousePositionWorldSpace;
 
+    Vector2 initPosition;
+
     private void Awake()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
+        initPosition = transform.position;
     }
 
     private void Update()
@@ -31,7 +34,7 @@ public class Player : MonoBehaviour
 
 private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        transform.position = initPosition;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
